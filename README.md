@@ -1,2 +1,2 @@
-# xbl-autoclaimer
-Autoclaim gamertags with this discord bot.
+# netcord
+Receive information about ip addresses by using discord.
