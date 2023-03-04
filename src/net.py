@@ -19,6 +19,8 @@ def ping(ip_address: str):
 
 
 def locate(ip_address: str):
+    if not is_valid_ipv4(ip_address) and not is_valid_ipv6(ip_address):
+        return None
     try:
         geo_location = geocoder.ip(ip_address)
         return geo_location.latlng
