@@ -1,3 +1,5 @@
+"""DiscordFormatter class."""
+
 from src.config import DiscordConfig
 
 

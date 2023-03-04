@@ -1,3 +1,5 @@
+"""Utility functions for the project."""
+
 import socket
 
 

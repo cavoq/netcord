@@ -1,3 +1,5 @@
+"""Discord bot configuration."""
+
 import json
 
 
