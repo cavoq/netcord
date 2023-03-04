@@ -1,5 +1,7 @@
 """Command processor for the bot."""
 
+from discord import File
+import folium
 from src.net import *
 from src.discord_formatter import DiscordFormatter
 from discord.ext import commands
@@ -25,6 +27,9 @@ class CommandProcessor(commands.Cog):
     @commands.command(name="locate")
     async def locate(self, ctx, ip_address: str):
         location = locate(ip_address)
+        lat, lng = location[0], location[1]
+        map_file = map_location(lat, lng, 13)
+        await ctx.send(file=map_file)
 
     @commands.command(name="commands")
     async def help(self, ctx):

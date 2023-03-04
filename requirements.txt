@@ -1,2 +1,4 @@
 discord.py==2.2.0
 geocoder==1.38.1
+folium==0.14.0
+selenium==4.8.2 
