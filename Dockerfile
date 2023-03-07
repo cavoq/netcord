@@ -1,6 +1,6 @@
-FROM python:3.10-alpine
+FROM python:3.10
 
-RUN apk add --no-cache build-base
+RUN apt-get update && apt-get install -y firefox-esr
 
 COPY . /netcord
 WORKDIR /netcord
@@ -13,4 +13,4 @@ ENV PORT=5000
 
 EXPOSE $PORT
 
-CMD ["python3.9", "netcord.py"]
+CMD ["python3.10", "netcord.py"]
