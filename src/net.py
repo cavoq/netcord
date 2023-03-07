@@ -26,3 +26,7 @@ def locate(ip_address: str):
         return geo_location.latlng
     except Exception:
         return None
+
+
+def trace(ip_address: str):
+    pass

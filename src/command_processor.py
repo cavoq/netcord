@@ -31,6 +31,10 @@ class CommandProcessor(commands.Cog):
         map_file = map_location(lat, lng, 13)
         await ctx.send(file=map_file)
 
+    @commands.command(name="trace")
+    async def trace(self, ctx, ip_address: str):
+        pass
+
     @commands.command(name="commands")
     async def help(self, ctx):
         await ctx.send(self.formatter.format_text("Available commands:\n- ping [IP address]\n- commands"))
