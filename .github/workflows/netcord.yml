@@ -18,6 +18,7 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y make
+        make install
         make install-dev
       
     - name: Build docker image
