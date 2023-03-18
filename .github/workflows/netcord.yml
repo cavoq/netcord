@@ -1,0 +1,30 @@
+name: Netcord Build, Test, and Lint
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y make
+        make install-dev
+      
+    - name: Build docker image
+      run: make docker-build
+      
+    - name: Test
+      run: make test
+      
+    - name: Lint
+      run: make lint
