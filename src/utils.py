@@ -3,7 +3,7 @@
 import socket
 from discord import File
 from io import BytesIO
-
+import re
 import folium
 
 
@@ -23,6 +23,12 @@ def is_valid_ipv6(ip) -> bool:
     except socket.error:
         return False
     return True
+
+
+def is_valid_domain(domain) -> bool:
+    """Check if the given domain is valid."""
+    pattern = r'^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$'
+    return bool(re.match(pattern, domain))
 
 
 def map_location(lat, lng, zoom) -> File:
