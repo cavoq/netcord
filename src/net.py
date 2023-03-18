@@ -6,6 +6,7 @@ from src.utils import *
 
 
 def ping(ip_address: str):
+    """Ping the given IP address and return True if it is reachable."""
     if is_valid_ipv4(ip_address):
         ping_command = "ping -c 1 "
     elif is_valid_ipv6(ip_address):
@@ -19,6 +20,7 @@ def ping(ip_address: str):
 
 
 def locate(ip_address: str):
+    """Return the latitude and longitude of the given IP address."""
     if not is_valid_ipv4(ip_address) and not is_valid_ipv6(ip_address):
         return None
     try:
@@ -29,4 +31,5 @@ def locate(ip_address: str):
 
 
 def trace(ip_address: str):
+    """Return the traceroute of the given IP address."""
     pass
