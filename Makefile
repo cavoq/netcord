@@ -15,6 +15,12 @@ help: ## Get help for Makefile
 install: ## Install requirements locally
 	pip3 install -r requirements.txt
 
+install-dev: ## Install requirements for development
+	pip3 install -r requirements-dev.txt
+
+lint: ## Run linter
+	$(PYTHON) -m pylint $(MAIN)
+
 test: ## Run tests
 	$(PYTHON) -m pytest test/
 
@@ -33,4 +39,4 @@ docker-remove: ## Remove docker container
 run: ## Run discord bot locally
 	$(PYTHON) $(MAIN).py
 
-.PHONY: help docker-build docker-run docker-sh docker-remove run install test
+.PHONY: help docker-build docker-run docker-sh docker-remove run install install-dev lint test

@@ -1,3 +1,5 @@
+"""Main entry point for the bot."""
+
 #!/usr/bin/env python3
 
 import asyncio
@@ -23,7 +25,8 @@ bot = commands.Bot(intents=discord.Intents.all(), command_prefix='!')
 processor = CommandProcessor(config)
 
 
-async def setup(bot: commands.Bot):
+async def setup(bot: commands.Bot): # pylint: disable=redefined-outer-name
+    """Setup the bot."""
     await bot.add_cog(processor)
 
 
