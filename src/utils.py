@@ -7,7 +7,7 @@ import re
 import folium
 
 
-def is_valid_ipv4(ip) -> bool:
+def is_valid_ipv4(ip: str) -> bool:
     """Check if the given IP is a valid IPv4 address."""
     try:
         socket.inet_pton(socket.AF_INET, ip)
@@ -16,7 +16,7 @@ def is_valid_ipv4(ip) -> bool:
     return True
 
 
-def is_valid_ipv6(ip) -> bool:
+def is_valid_ipv6(ip: str) -> bool:
     """Check if the given IP is a valid IPv6 address."""
     try:
         socket.inet_pton(socket.AF_INET6, ip)
@@ -25,13 +25,13 @@ def is_valid_ipv6(ip) -> bool:
     return True
 
 
-def is_valid_domain(domain) -> bool:
+def is_valid_domain(domain: str) -> bool:
     """Check if the given domain is valid."""
     pattern = r'^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$'
     return bool(re.match(pattern, domain))
 
 
-def resolve_address(address):
+def resolve_address(address: str):
     """Resolve the given address and return the IP address."""
     try:
         results = socket.getaddrinfo(address, None)
@@ -40,12 +40,12 @@ def resolve_address(address):
             ip_address = sockaddr[0]
             if family == socket.AF_INET or family == socket.AF_INET6:
                 return ip_address
-    except socket.gaierror as e:
-        print("Error resolving address:", e)
+    except socket.gaierror:
+        raise ValueError(f'Could not resolve address + {address}')
     return None
 
 
-def map_location(lat, lng, zoom) -> File:
+def map_location(lat: float, lng: float, zoom: int) -> File:
     """Create a map of the given location and return it as a File object."""
     map = folium.Map(location=[lat, lng], zoom_start=zoom)
     marker = folium.Marker(location=[lat, lng])
