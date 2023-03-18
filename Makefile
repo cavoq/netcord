@@ -28,10 +28,10 @@ docker-build: ## Build docker image
 	docker build --no-cache -t $(NAME) .
 
 docker-run: ## Run discord bot inside docker container
-	docker run --network=host --env-file .env --name netcord $(NAME)
+	docker run --privileged --network=host --env-file .env --name netcord $(NAME)
 
 docker-sh: ## Shell into docker container
-	docker run -it $(NAME) sh
+	docker run --network=host --privileged -it $(NAME) sh
 
 docker-remove: ## Remove docker container
 	docker container rm $(NAME)
