@@ -31,6 +31,20 @@ def is_valid_domain(domain) -> bool:
     return bool(re.match(pattern, domain))
 
 
+def resolve_address(address):
+    """Resolve the given address and return the IP address."""
+    try:
+        results = socket.getaddrinfo(address, None)
+        for result in results:
+            family, socktype, proto, canonname, sockaddr = result
+            ip_address = sockaddr[0]
+            if family == socket.AF_INET or family == socket.AF_INET6:
+                return ip_address
+    except socket.gaierror as e:
+        print("Error resolving address:", e)
+    return None
+
+
 def map_location(lat, lng, zoom) -> File:
     """Create a map of the given location and return it as a File object."""
     map = folium.Map(location=[lat, lng], zoom_start=zoom)

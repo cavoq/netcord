@@ -29,6 +29,9 @@ class CommandProcessor(commands.Cog):
     async def locate(self, ctx, ip_address: str):
         """Return the latitude and longitude of the given IP address."""
         location = locate(ip_address)
+        if location is None:
+            await ctx.send(self.formatter.format_text("Location not found"))
+            return
         lat, lng = location[0], location[1]
         map_file = map_location(lat, lng, 13)
         await ctx.send(file=map_file)

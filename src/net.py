@@ -21,7 +21,9 @@ def ping(ip_address: str) -> bool:
 
 def locate(ip_address: str) -> tuple or None:
     """Return the latitude and longitude of the given IP address."""
-    if not (is_valid_ipv4(ip_address) or is_valid_ipv6(ip_address) or is_valid_domain(ip_address)):
+    if is_valid_domain(ip_address):
+        ip_address = resolve_address(ip_address)
+    if not (is_valid_ipv4(ip_address) or is_valid_ipv6(ip_address)):
         return None
     geo_location = geocoder.ip(ip_address)
     if geo_location.ok and geo_location.latlng != []:
