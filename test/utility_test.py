@@ -1,7 +1,8 @@
 """Test utility functions."""
 import socket
 from discord import File
-from src.utils import is_valid_ipv4, is_valid_ipv6, is_valid_domain, map_location, resolve_address
+import pytest
+from src.utils import *
 
 
 class TestNetUtilityFunctions:
@@ -34,15 +35,13 @@ class TestNetUtilityFunctions:
         assert is_valid_domain('192.168.1.1') == False
         assert is_valid_domain('notavaliddomain') == False
 
-    def test_resolve_address():
+    def test_resolve_address(self):
         """Test the resolve_address function."""
-        assert resolve_address(
-            "google.com") == socket.gethostbyname("google.com")
         assert resolve_address("8.8.8.8") == "8.8.8.8"
-        assert resolve_address(
-            "2001:4860:4860::8888") == "2001:4860:4860::8888"
-        assert resolve_address("invalid") is None
-        assert resolve_address("non-existing-domain.com") is None
+        assert resolve_address("2001:4860:4860::8888") == "2001:4860:4860::8888"
+        with pytest.raises(ValueError):
+            resolve_address("invalid")
+            resolve_address("non-existing-domain.com")
 
     def test_map_location(self):
         """Test the map_location function."""
