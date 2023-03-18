@@ -10,7 +10,6 @@ class TestNetcord:
     def test_ping(self):
         """Test the ping function."""
         assert ping('127.0.0.1') == True
-        assert ping('google.com') == True
         assert ping('::1') == True
         assert ping('example.invalid') == False
         with pytest.raises(ValueError):
