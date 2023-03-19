@@ -17,7 +17,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y make
+        sudo apt-get install -y make traceroute iputils-ping
         make install
         make install-dev
       
