@@ -16,7 +16,7 @@ DISCORD_TOKEN=<YOUR_DISCORD_TOKEN>
 
 See *make help*
 
-![image](https://user-images.githubusercontent.com/61215846/221359714-040caa53-5755-45d3-9e49-f9541fb47259.png)
+![image](https://user-images.githubusercontent.com/61215846/226197305-84e6ea1e-f929-4430-9072-ddfb60da268c.png)
 
 ## Deployment
 
