@@ -10,6 +10,6 @@ def test_map_location():
     lat = 40.730610
     lng = -73.935242
     zoom = 10
-    map_file = map_location(lat, lng, zoom)
+    map_file = map_location(lat, lng, {'zoom': zoom, 'radius_m': 100, 'color': 'red'})
     assert isinstance(map_file, File)
     assert map_file.filename == 'map.png'
