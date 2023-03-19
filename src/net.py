@@ -1,6 +1,5 @@
 """Network related functions."""
 
-import os
 import subprocess
 import geocoder
 from src.utils import *
