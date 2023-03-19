@@ -1,6 +1,7 @@
 """Network related functions."""
 
 import os
+import subprocess
 import geocoder
 from src.utils import *
 
@@ -34,6 +35,19 @@ def locate(ip_address: str) -> tuple or None:
     return None
 
 
-def trace(ip_address: str):
+def trace(ip_address: str) -> str:
     """Return the traceroute of the given IP address."""
-    pass
+    if is_valid_ipv4(ip_address):
+        trace_command = "traceroute"
+    elif is_valid_ipv6(ip_address):
+        trace_command = "traceroute6"
+    else:
+        raise ValueError("Invalid IP address")
+
+    try:
+        output = subprocess.check_output(
+            [trace_command, ip_address], universal_newlines=True, timeout=10)
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
+        return ""
+
+    return output
