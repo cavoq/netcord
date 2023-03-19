@@ -41,7 +41,15 @@ class CommandProcessor(commands.Cog):
     @commands.command(name="trace")
     async def trace(self, ctx, ip_address: str):
         """Return the traceroute of the given IP address."""
-        pass
+        try:
+            trace_output = trace(ip_address)
+        except ValueError:
+            await ctx.send(self.formatter.format_text("Invalid IP address"))
+            return
+        except Exception:
+            await ctx.send(self.formatter.format_text("Could not trace route"))
+            return
+        await ctx.send(self.formatter.format_text(trace_output))
 
     @commands.command(name="commands")
     async def help(self, ctx):

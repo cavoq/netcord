@@ -48,6 +48,6 @@ def trace(ip_address: str) -> str:
         output = subprocess.check_output(
             [trace_command, ip_address], universal_newlines=True, timeout=10)
     except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
-        return ""
+        return "Could not trace route"
 
     return output

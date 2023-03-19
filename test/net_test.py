@@ -1,6 +1,5 @@
 """Test the netcord module."""
 
-import subprocess
 import pytest
 from src.net import *
 
