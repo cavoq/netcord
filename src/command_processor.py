@@ -17,14 +17,12 @@ class CommandProcessor(commands.Cog):
     async def ping(self, ctx, ip_address: str):
         """Ping the given IP address and return True if it is reachable."""
         try:
-            reachable = ping(ip_address)
+            ping_output = ping(ip_address)
         except ValueError:
             await ctx.send(self.formatter.format_text("Invalid IP address"))
             return
-        if reachable:
-            await ctx.send(self.formatter.format_text(f"[{ip_address}] - Online"))
-            return
-        await ctx.send(self.formatter.format_text(f"[{ip_address}] - Offline"))
+        await ctx.send(self.formatter.format_text(ping_output))
+        return
 
     @commands.command(name="locate")
     async def locate(self, ctx, ip_address: str):

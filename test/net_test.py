@@ -9,10 +9,10 @@ class TestNetcord:
 
     def test_ping(self):
         """Test the ping function."""
-        assert ping('127.0.0.1') == True
-        assert ping('::1') == True
-        assert ping('example.invalid') == False
+        assert isinstance(ping('127.0.0.1'), str)
+        assert isinstance(ping('::1'), str)
         with pytest.raises(ValueError):
+            ping('example.invalid')
             ping('256.256.256.256')
 
     def test_locate(self):

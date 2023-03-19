@@ -6,18 +6,17 @@ import geocoder
 from src.utils import *
 
 
-def ping(ip_address: str) -> bool:
-    """Ping the given IP address and return True if it is reachable."""
+def ping(ip_address: str) -> str:
+    """Ping the given IP address and return the output of the ping command."""
     if is_valid_ipv4(ip_address) or is_valid_domain(ip_address):
-        ping_command = "ping -c 1 "
+        ping_command = "ping -c 3 "
     elif is_valid_ipv6(ip_address):
-        ping_command = "ping6 -c 1 "
+        ping_command = "ping6 -c 3 "
     else:
         raise ValueError("Invalid IP address")
-    response = os.system(ping_command + ip_address + ' > /dev/null 2>&1')
-    if response != 0:
-        return False
-    return True
+    result = subprocess.run(ping_command + ip_address,
+                            stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+    return result.stdout.decode()
 
 
 def locate(ip_address: str) -> tuple or None:
