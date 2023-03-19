@@ -43,13 +43,3 @@ def resolve_address(address: str):
     except socket.gaierror:
         raise ValueError(f'Could not resolve address + {address}')
     return None
-
-
-def map_location(lat: float, lng: float, zoom: int) -> File:
-    """Create a map of the given location and return it as a File object."""
-    map = folium.Map(location=[lat, lng], zoom_start=zoom)
-    marker = folium.Marker(location=[lat, lng])
-    marker.add_to(map)
-    map_bytes = map._to_png(delay=1)
-    map_io = BytesIO(map_bytes)
-    return File(map_io, filename='map.png')

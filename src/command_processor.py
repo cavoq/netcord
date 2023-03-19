@@ -33,7 +33,7 @@ class CommandProcessor(commands.Cog):
             await ctx.send(self.formatter.format_text("Location not found"))
             return
         lat, lng = location[0], location[1]
-        map_file = map_location(lat, lng, 13)
+        #map_file = map_location(lat, lng, 13)
         await ctx.send(file=map_file)
 
     @commands.command(name="trace")
