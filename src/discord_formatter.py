@@ -11,4 +11,4 @@ class DiscordFormatter:
 
     def format_text(self, text):
         """Format the given text for Discord."""
-        return f"**```arm\n{text}```**"
+        return f"**```ini\n{text}```**"
