@@ -4,6 +4,12 @@ Discord bot to perform network operations through discord.
 ![license](https://img.shields.io/badge/license-MIT-brightgreen.svg)
 ![version](https://img.shields.io/badge/version-1.0.0-lightgrey.svg)
 
+## Supported commands
+
+- ping Ping a host
+- trace Trace a host
+- locate Get a map of the approximate location of a host
+
 ## Setup
 
 Create a file called .env and fill it with the following information:
