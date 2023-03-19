@@ -1,7 +1,8 @@
 """Test the netcord module."""
 
+import subprocess
 import pytest
-from src.net import ping, locate
+from src.net import *
 
 
 class TestNetcord:
@@ -22,3 +23,14 @@ class TestNetcord:
         assert locate('::1') == None
         assert locate('example.invalid') == None
         assert locate('256.256.256.256') == None
+
+    def test_trace(self):
+        """Test the trace function."""
+        result = trace("8.8.8.8")
+        assert isinstance(result, str)
+
+        result = trace("2001:4860:4860::8888")
+        assert isinstance(result, str)
+
+        with pytest.raises(ValueError):
+            trace("invalid")
