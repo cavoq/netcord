@@ -1,6 +1,7 @@
 {
     "map_location": {
         "radius_km": 1000,
-        "radius_color": "#FF0000"
+        "radius_color": "#FF0000",
+        "zoom": 10
     }
 }

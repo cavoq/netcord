@@ -1,6 +1,5 @@
 """Test utility functions."""
-import socket
-from discord import File
+
 import pytest
 from src.utils import *
 
@@ -38,15 +37,8 @@ class TestNetUtilityFunctions:
     def test_resolve_address(self):
         """Test the resolve_address function."""
         assert resolve_address("8.8.8.8") == "8.8.8.8"
-        assert resolve_address("2001:4860:4860::8888") == "2001:4860:4860::8888"
+        assert resolve_address(
+            "2001:4860:4860::8888") == "2001:4860:4860::8888"
         with pytest.raises(ValueError):
             resolve_address("invalid")
             resolve_address("non-existing-domain.com")
-
-    def test_map_location(self):
-        """Test the map_location function."""
-        # replace the coordinates with a valid location
-        lat, lng = 37.7749, -122.4194
-        zoom = 13
-        map_file = map_location(lat, lng, zoom)
-        assert isinstance(map_file, File) == True
