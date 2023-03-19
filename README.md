@@ -6,7 +6,7 @@ Discord bot to perform network operations through discord.
 
 ## Supported commands
 
-- *!ping <host>* Ping a host
+- *!ping* <host> Ping a host
 - *!trace <host>* Trace a host
 - *!locate <host>* Get a map of the approximate location of a host
 
