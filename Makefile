@@ -3,7 +3,7 @@ PYTHON=python3
 HOST=0.0.0.0
 PORT=5000
 MAIN=netcord
-VERSION=1.0.0
+VERSION=1.1.0
 
 
 help: ## Get help for Makefile
