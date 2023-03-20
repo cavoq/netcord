@@ -8,7 +8,7 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 from src.config import DiscordConfig
-from src.command_processor import CommandProcessor
+from netcord_processor import NetcordProcessor
 
 load_dotenv()
 
@@ -22,7 +22,7 @@ if CONFIG_FILE is None:
 
 config = DiscordConfig(CONFIG_FILE)
 bot = commands.Bot(intents=discord.Intents.all(), command_prefix='!')
-processor = CommandProcessor(config)
+processor = NetcordProcessor(config)
 
 
 async def setup(bot: commands.Bot): # pylint: disable=redefined-outer-name

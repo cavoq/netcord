@@ -6,7 +6,7 @@ from src.map import map_location
 from discord.ext import commands
 
 
-class CommandProcessor(commands.Cog):
+class NetcordProcessor(commands.Cog):
     """Class to process commands for the bot."""
 
     def __init__(self, config):
@@ -19,7 +19,7 @@ class CommandProcessor(commands.Cog):
         try:
             ping_output = ping(ip_address)
         except ValueError:
-            await ctx.send(self.formatter.format_text("Invalid IP address"))
+            await ctx.send(self.formatter.format_text(ValueError))
             return
         await ctx.send(self.formatter.format_text(ping_output))
         return
@@ -42,7 +42,7 @@ class CommandProcessor(commands.Cog):
         try:
             trace_output = traceroute(ip_address)
         except ValueError:
-            await ctx.send(self.formatter.format_text("Invalid IP address"))
+            await ctx.send(self.formatter.format_text(ValueError))
             return
         except Exception:
             await ctx.send(self.formatter.format_text("Could not trace route"))
@@ -55,9 +55,19 @@ class CommandProcessor(commands.Cog):
         try:
             dig_output = dig(ip_address)
         except ValueError:
-            await ctx.send(self.formatter.format_text("Invalid IP address"))
+            await ctx.send(self.formatter.format_text(ValueError))
             return
         await ctx.send(self.formatter.format_text(dig_output))
+
+    @commands.command(name="nslookup")
+    async def nslookup(self, ctx, ip_address: str):
+        """Return the DNS records of the given IP address."""
+        try:
+            nslookup_output = nslookup(ip_address)
+        except ValueError:
+            await ctx.send(self.formatter.format_text(ValueError))
+            return
+        await ctx.send(self.formatter.format_text(nslookup_output))
 
     @commands.command(name="commands")
     async def help(self, ctx):
