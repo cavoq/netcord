@@ -37,10 +37,10 @@ class CommandProcessor(commands.Cog):
         await ctx.send(file=map_file)
 
     @commands.command(name="trace")
-    async def trace(self, ctx, ip_address: str):
+    async def traceroute(self, ctx, ip_address: str):
         """Return the traceroute of the given IP address."""
         try:
-            trace_output = trace(ip_address)
+            trace_output = traceroute(ip_address)
         except ValueError:
             await ctx.send(self.formatter.format_text("Invalid IP address"))
             return

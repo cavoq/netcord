@@ -33,7 +33,7 @@ def locate(ip_address: str) -> tuple or None:
     return None
 
 
-def trace(ip_address: str) -> str:
+def traceroute(ip_address: str) -> str:
     """Return the traceroute of the given IP address."""
     if is_valid_ipv4(ip_address) or is_valid_domain(ip_address):
         trace_command = "traceroute"
