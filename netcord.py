@@ -8,7 +8,7 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 from src.config import DiscordConfig
-from netcord_processor import NetcordProcessor
+from src.netcord_processor import NetcordProcessor
 
 load_dotenv()
 
@@ -25,7 +25,7 @@ bot = commands.Bot(intents=discord.Intents.all(), command_prefix='!')
 processor = NetcordProcessor(config)
 
 
-async def setup(bot: commands.Bot): # pylint: disable=redefined-outer-name
+async def setup(bot: commands.Bot):  # pylint: disable=redefined-outer-name
     """Setup the bot."""
     await bot.add_cog(processor)
 
