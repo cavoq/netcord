@@ -2,7 +2,7 @@ FROM python:3.10
 
 RUN useradd --create-home netcord_user
 
-RUN apt-get update && apt-get install -y apt-utils firefox-esr iputils-ping traceroute
+RUN apt-get update && apt-get install -y apt-utils firefox-esr iputils-ping traceroute dnsutils net-tools
 
 ENV PATH="/home/netcord_user/.local/bin:${PATH}"
 
