@@ -8,6 +8,7 @@ Discord bot to perform network operations through discord.
 
 - **!ping** *host* Ping a host
 - **!traceroute** *host* Trace a host
+- **!dig** *host* Get DNS information about a host
 - **!locate** *host* Get a map of the approximate location of a host
 
 ## Setup

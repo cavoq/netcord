@@ -49,3 +49,16 @@ def traceroute(ip_address: str) -> str:
         return "Could not trace route"
 
     return output
+
+
+def dig(ip_address: str) -> str:
+    """Return the DNS records of the given IP address."""
+    if not (is_valid_ipv4(ip_address) or is_valid_domain(ip_address) or is_valid_ipv6(ip_address)):
+        raise ValueError("Invalid IP address")
+    try:
+        output = subprocess.check_output(
+            ["dig", ip_address], universal_newlines=True, timeout=10)
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
+        return "Could not resolve DNS records"
+
+    return output

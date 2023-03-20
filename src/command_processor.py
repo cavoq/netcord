@@ -49,6 +49,16 @@ class CommandProcessor(commands.Cog):
             return
         await ctx.send(self.formatter.format_text(trace_output))
 
+    @commands.command(name="dig")
+    async def dig(self, ctx, ip_address: str):
+        """Return the DNS records of the given IP address."""
+        try:
+            dig_output = dig(ip_address)
+        except ValueError:
+            await ctx.send(self.formatter.format_text("Invalid IP address"))
+            return
+        await ctx.send(self.formatter.format_text(dig_output))
+
     @commands.command(name="commands")
     async def help(self, ctx):
         """Return the list of available commands."""
