@@ -44,3 +44,14 @@ class TestNetcord:
 
         with pytest.raises(ValueError):
             dig("invalid")
+
+    def test_nslookup(self):
+        """Test the nslookup function."""
+        result = nslookup("8.8.8.8")
+        assert isinstance(result, str)
+
+        result = nslookup("2001:4860:4860::8888")
+        assert isinstance(result, str)
+
+        with pytest.raises(ValueError):
+            nslookup("invalid")
