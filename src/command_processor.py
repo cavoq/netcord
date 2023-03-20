@@ -36,7 +36,7 @@ class CommandProcessor(commands.Cog):
         map_file = map_location(lat, lng, map_config)
         await ctx.send(file=map_file)
 
-    @commands.command(name="trace")
+    @commands.command(name="traceroute")
     async def traceroute(self, ctx, ip_address: str):
         """Return the traceroute of the given IP address."""
         try:

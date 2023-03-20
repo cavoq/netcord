@@ -25,11 +25,22 @@ class TestNetcord:
 
     def test_trace(self):
         """Test the trace function."""
-        result = trace("8.8.8.8")
+        result = traceroute("8.8.8.8")
         assert isinstance(result, str)
 
-        result = trace("2001:4860:4860::8888")
+        result = traceroute("2001:4860:4860::8888")
         assert isinstance(result, str)
 
         with pytest.raises(ValueError):
-            trace("invalid")
+            traceroute("invalid")
+
+    def test_dig(self):
+        """Test the dig function."""
+        result = dig("8.8.8.8")
+        assert isinstance(result, str)
+
+        result = dig("2001:4860:4860::8888")
+        assert isinstance(result, str)
+
+        with pytest.raises(ValueError):
+            dig("invalid")
