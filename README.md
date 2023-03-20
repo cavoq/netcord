@@ -24,7 +24,7 @@ DISCORD_TOKEN=<YOUR_DISCORD_TOKEN>
 
 See *make help*
 
-![image](https://user-images.githubusercontent.com/61215846/226197305-84e6ea1e-f929-4430-9072-ddfb60da268c.png)
+![image](https://user-images.githubusercontent.com/61215846/226449297-f2a8e355-4fb7-4071-8be6-1f22cebee13a.png)
 
 ## Deployment
 
