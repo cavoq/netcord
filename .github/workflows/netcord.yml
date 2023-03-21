@@ -23,9 +23,38 @@ jobs:
       
     - name: Build docker image
       run: make docker-build
-    
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y make traceroute iputils-ping
+        make install
+        make install-dev
+      
     - name: Lint
       run: make lint
 
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y make traceroute iputils-ping
+        make install
+        make install-dev
+      
     - name: Test
       run: make test
+
