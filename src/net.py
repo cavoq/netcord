@@ -84,7 +84,7 @@ def sslcert(host: str):
     if not (is_valid_ipv4(host) or is_valid_domain(host) or is_valid_ipv6(host)):
         raise ValueError("Invalid domain or IP address")
 
-    if is_valid_ipv4(host) or is_valid_domain(host):
+    if is_valid_ipv4(host):
         address_family = socket.AF_INET
     else:
         address_family = socket.AF_INET6
@@ -98,13 +98,11 @@ def sslcert(host: str):
         except socket.error as e:
             return f"Error: Could not connect to {host}: {e}"
 
-    with ssl.create_default_context().wrap_socket(s, server_hostname=host) as sock:
-        cert = sock.getpeercert()
+        with ssl.create_default_context().wrap_socket(s, server_hostname=host) as sock:
+            cert = sock.getpeercert()
 
-    return (f"Certificate information for {host}:\n"
+    return (f"Certificate information for {host}:\n" #TODO: Add more information
             f"Issued to: {cert['subject'][0][0]}\n"
             f"Issued by: {cert['issuer'][0][0]}\n"
             f"Valid from: {cert['notBefore']}\n"
-            f"Valid until: {cert['notAfter']}\n"
-            f"Fingerprint (SHA-256): {cert['fingerprint'][1]}\n"
-            f"Public key algorithm: {cert['pubkey'][0]}")
+            f"Valid until: {cert['notAfter']}\n")

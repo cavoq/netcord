@@ -55,3 +55,8 @@ class TestNetcord:
 
         with pytest.raises(ValueError):
             nslookup("invalid")
+
+    def test_sslcert(self):
+        """Test the sslcert function."""
+        assert "Certificate information for google.com" in sslcert(
+            "google.com")
