@@ -2,6 +2,8 @@
 
 import subprocess
 import geocoder
+import ssl
+import socket
 from src.utils import *
 
 
@@ -73,5 +75,36 @@ def nslookup(ip_address: str) -> str:
             ["nslookup", ip_address], universal_newlines=True, timeout=10)
     except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
         return "Could not resolve DNS records"
-    
+
     return output
+
+
+def sslcert(host: str):
+    """Return the SSL certificate of the given domain."""
+    if not (is_valid_ipv4(host) or is_valid_domain(host) or is_valid_ipv6(host)):
+        raise ValueError("Invalid domain or IP address")
+
+    if is_valid_ipv4(host) or is_valid_domain(host):
+        address_family = socket.AF_INET
+    else:
+        address_family = socket.AF_INET6
+
+    with socket.socket(address_family, socket.SOCK_STREAM) as s:
+        s.settimeout(10)
+        try:
+            s.connect((host, 443))
+        except socket.timeout:
+            return f"Error: Connection to {host} timed out."
+        except socket.error as e:
+            return f"Error: Could not connect to {host}: {e}"
+
+    with ssl.create_default_context().wrap_socket(s, server_hostname=host) as sock:
+        cert = sock.getpeercert()
+
+    return (f"Certificate information for {host}:\n"
+            f"Issued to: {cert['subject'][0][0]}\n"
+            f"Issued by: {cert['issuer'][0][0]}\n"
+            f"Valid from: {cert['notBefore']}\n"
+            f"Valid until: {cert['notAfter']}\n"
+            f"Fingerprint (SHA-256): {cert['fingerprint'][1]}\n"
+            f"Public key algorithm: {cert['pubkey'][0]}")
