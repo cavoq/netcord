@@ -11,6 +11,7 @@ Discord bot to perform network operations through discord.
 - **!dig** *host* Get DNS information about a host
 - **!nslookup** *host* Get DNS information about a host
 - **!locate** *host* Get a map of the approximate location of a host
+- **!sslcert** *host* Get ssl certificate information about a host
 
 ## Setup
 
