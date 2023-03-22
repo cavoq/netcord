@@ -58,5 +58,5 @@ class TestNetcord:
 
     def test_sslcert(self):
         """Test the sslcert function."""
-        assert "Certificate information for 8.8.8.8" in sslcert(
-            "8.8.8.8")
+        result = sslcert("8.8.8.8")
+        assert isinstance(result, dict)

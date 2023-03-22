@@ -101,8 +101,4 @@ def sslcert(host: str):
         with ssl.create_default_context().wrap_socket(s, server_hostname=host) as sock:
             cert = sock.getpeercert()
 
-    return (f"Certificate information for {host}:\n"  # TODO: Add more information
-            f"Issued to: {cert['subject'][0][0]}\n"
-            f"Issued by: {cert['issuer'][0][0]}\n"
-            f"Valid from: {cert['notBefore']}\n"
-            f"Valid until: {cert['notAfter']}\n")
+    return cert

@@ -79,7 +79,7 @@ class NetcordProcessor(commands.Cog):
         except ConnectionError:
             await ctx.send(self.formatter.format_text(ConnectionError))
             return
-        await ctx.send(self.formatter.format_text(sslcert_output))
+        await ctx.send(self.formatter.format_ssl_certificate(sslcert_output))
 
     @commands.command(name="commands")
     async def help(self, ctx):
