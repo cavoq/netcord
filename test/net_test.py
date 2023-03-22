@@ -58,5 +58,5 @@ class TestNetcord:
 
     def test_sslcert(self):
         """Test the sslcert function."""
-        assert "Certificate information for google.com" in sslcert(
-            "google.com")
+        assert "Certificate information for 8.8.8.8" in sslcert(
+            "8.8.8.8")

@@ -69,6 +69,18 @@ class NetcordProcessor(commands.Cog):
             return
         await ctx.send(self.formatter.format_text(nslookup_output))
 
+    @commands.command(name="sslcert")
+    async def sslcert(self, ctx, host: str):
+        """Return the SSL certificate of the given host."""
+        try:
+            sslcert_output = sslcert(host)
+        except ValueError:
+            await ctx.send(self.formatter.format_text(ValueError))
+        except ConnectionError:
+            await ctx.send(self.formatter.format_text(ConnectionError))
+            return
+        await ctx.send(self.formatter.format_text(sslcert_output))
+
     @commands.command(name="commands")
     async def help(self, ctx):
         """Return the list of available commands."""

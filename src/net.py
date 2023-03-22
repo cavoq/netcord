@@ -84,7 +84,7 @@ def sslcert(host: str):
     if not (is_valid_ipv4(host) or is_valid_domain(host) or is_valid_ipv6(host)):
         raise ValueError("Invalid domain or IP address")
 
-    if is_valid_ipv4(host):
+    if is_valid_ipv4(host) or is_valid_domain(host):
         address_family = socket.AF_INET
     else:
         address_family = socket.AF_INET6
@@ -94,14 +94,14 @@ def sslcert(host: str):
         try:
             s.connect((host, 443))
         except socket.timeout:
-            return f"Error: Connection to {host} timed out."
+            return ConnectionError(f"Error: Connection to {host} timed out.")
         except socket.error as e:
-            return f"Error: Could not connect to {host}: {e}"
+            return ConnectionError(f"Error: Could not connect to {host}: {e}")
 
         with ssl.create_default_context().wrap_socket(s, server_hostname=host) as sock:
             cert = sock.getpeercert()
 
-    return (f"Certificate information for {host}:\n" #TODO: Add more information
+    return (f"Certificate information for {host}:\n"  # TODO: Add more information
             f"Issued to: {cert['subject'][0][0]}\n"
             f"Issued by: {cert['issuer'][0][0]}\n"
             f"Valid from: {cert['notBefore']}\n"
