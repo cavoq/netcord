@@ -1,5 +1,5 @@
 NAME=netcord
-PYTHON=python3
+PYTHON=python3.11
 HOST=0.0.0.0
 PORT=5000
 MAIN=netcord
@@ -13,6 +13,7 @@ help: ## Get help for Makefile
 	@echo "\n"
 
 install: ## Install requirements locally
+	sudo apt-get update && sudo apt-get install -y apt-utils firefox iputils-ping traceroute dnsutils net-tools
 	pip3 install -r requirements.txt
 
 install-dev: ## Install requirements for development
