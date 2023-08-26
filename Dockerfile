@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.11
 
 RUN useradd --create-home netcord_user
 
@@ -20,4 +20,4 @@ ENV PORT=5000
 
 EXPOSE $PORT
 
-CMD ["python3.10", "netcord.py"]
+CMD ["python3.11", "netcord.py"]

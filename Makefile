@@ -1,5 +1,5 @@
 NAME=netcord
-PYTHON=python3.10
+PYTHON=python3.11
 PIP=pip3
 HOST=0.0.0.0
 PORT=5000
