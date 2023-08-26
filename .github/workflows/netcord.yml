@@ -40,7 +40,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y make firefox
+        sudo apt-get install -y make firefox-esr
         make install
         make install-dev
 
@@ -60,7 +60,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y make firefox
+        sudo apt-get install -y make firefox-esr
         make install
         make install-dev
   
