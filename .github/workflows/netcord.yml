@@ -30,15 +30,6 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-    
-    - name: Install Python 3.11
-      run: |
-        sudo apt-get install -y python3.11
-
-    - name: Use pip3 for Python 3.11
-      run: |
-        sudo apt-get install -y python3.11-distutils
-        sudo update-alternatives --install /usr/bin/pip3 pip3 /usr/bin/pip3.11 1
 
     - name: Install dependencies
       run: |
@@ -56,15 +47,6 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-    
-    - name: Install Python 3.11
-      run: |
-        sudo apt-get install -y python3.11
-
-    - name: Use pip3 for Python 3.11
-      run: |
-        sudo apt-get install -y python3.11-distutils
-        sudo update-alternatives --install /usr/bin/pip3 pip3 /usr/bin/pip3.11 1
 
     - name: Install dependencies
       run: |
