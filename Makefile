@@ -30,10 +30,10 @@ docker-build: ## Build docker image
 	docker build -t $(NAME) .
 
 docker-test: ## Run tests inside Docker container
-	docker run -it --rm $(NAME) make install-dev test
+	docker run --rm $(NAME) make install-dev test
 
 docker-lint: ## Run linting inside Docker container
-	docker run -it --rm $(NAME) make install-dev lint
+	docker run --rm $(NAME) make install-dev lint
 
 docker-run: ## Run discord bot inside docker container
 	docker run --privileged --network=host --env-file .env --name netcord $(NAME)
