@@ -1,5 +1,6 @@
 NAME=netcord
 PYTHON=python3.11
+PIP=pip3
 HOST=0.0.0.0
 PORT=5000
 MAIN=netcord
@@ -14,10 +15,10 @@ help: ## Get help for Makefile
 
 install: ## Install requirements locally
 	sudo apt-get update && sudo apt-get install -y apt-utils firefox iputils-ping traceroute dnsutils net-tools
-	pip3 install -r requirements.txt
+	$(PIP) install -r requirements.txt
 
 install-dev: ## Install requirements for development
-	pip3 install -r requirements-dev.txt
+	$(PIP) install -r requirements-dev.txt
 
 lint: ## Run linter
 	$(PYTHON) -m pylint $(MAIN)
@@ -26,7 +27,7 @@ test: ## Run tests
 	$(PYTHON) -m pytest test/
 
 docker-build: ## Build docker image
-	docker build --no-cache -t $(NAME) .
+	docker build -t $(NAME) .
 
 docker-run: ## Run discord bot inside docker container
 	docker run --privileged --network=host --env-file .env --name netcord $(NAME)

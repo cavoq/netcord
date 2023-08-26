@@ -1,8 +1,8 @@
-FROM python:3.10
+FROM python:3.11
 
 RUN useradd --create-home netcord_user
 
-RUN apt-get update && apt-get install -y apt-utils firefox iputils-ping traceroute dnsutils net-tools
+RUN apt-get update && apt-get install -y apt-utils firefox-esr iputils-ping traceroute dnsutils net-tools
 
 ENV PATH="/home/netcord_user/.local/bin:${PATH}"
 
@@ -20,4 +20,4 @@ ENV PORT=5000
 
 EXPOSE $PORT
 
-CMD ["python3.10", "netcord.py"]
+CMD ["python3.11", "netcord.py"]
