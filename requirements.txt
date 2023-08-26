@@ -1,6 +1,6 @@
-discord.py==2.2.3
+discord.py==2.3.2
 geocoder==1.38.1
 folium==0.14.0
-selenium==4.8.2
+selenium==4.11.2
 python-dotenv==1.0.0
-numpy==1.24.3 
+numpy==1.25.2
