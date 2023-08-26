@@ -14,7 +14,7 @@ help: ## Get help for Makefile
 	@echo "\n"
 
 install: ## Install requirements locally
-	sudo apt-get update && sudo apt-get install -y apt-utils firefox-esr iputils-ping traceroute dnsutils net-tools
+	sudo apt-get update && sudo apt-get install -y apt-utils iputils-ping traceroute dnsutils net-tools
 	$(PIP) install -r requirements.txt
 
 install-dev: ## Install requirements for development

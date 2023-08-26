@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y make traceroute iputils-ping
+        sudo apt-get install -y make firefox
         make install
         make install-dev
       
@@ -40,7 +40,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y make traceroute iputils-ping
+        sudo apt-get install -y make firefox
         make install
         make install-dev
 
@@ -54,10 +54,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Use Python 3.11 image
+      uses: docker://python:3.11
+
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y make traceroute iputils-ping
+        sudo apt-get install -y make firefox
         make install
         make install-dev
   
