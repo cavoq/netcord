@@ -13,17 +13,12 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-    
-    - name: Use Python 3.11 image
-      uses: docker://python:3.11
 
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y make firefox
-        make install
-        make install-dev
-      
+        sudo apt-get install -y make
+
     - name: Build docker image
       run: make docker-build
 
@@ -34,18 +29,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Use Python 3.11 image
-      uses: docker://python:3.11
-
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y make firefox-esr
-        make install
-        make install-dev
+        sudo apt-get install -y make
+        make docker-build
 
     - name: Lint
-      run: make lint
+      run: make docker-lint
 
   test:
     runs-on: ubuntu-latest
@@ -54,16 +45,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Use Python 3.11 image
-      uses: docker://python:3.11
-
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y make firefox-esr
-        make install
-        make install-dev
+        sudo apt-get install -y make
+        make docker-build
   
     - name: Test
-      run: make test
+      run: make docker-test
 
