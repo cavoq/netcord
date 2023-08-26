@@ -1,6 +1,6 @@
 NAME=netcord
 PYTHON=python3.11
-PIP=pip3.11
+PIP=pip3
 HOST=0.0.0.0
 PORT=5000
 MAIN=netcord
