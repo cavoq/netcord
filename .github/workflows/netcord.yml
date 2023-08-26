@@ -30,14 +30,22 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-      
+    
+    - name: Install Python 3.11
+      run: |
+        sudo apt-get install -y python3.11
+  
     - name: Install dependencies
       run: |
         sudo apt-get update
         sudo apt-get install -y make traceroute iputils-ping
         make install
         make install-dev
-      
+    
+    - name: Install Python 3.11
+    run: |
+      sudo apt-get install -y python3.11
+
     - name: Lint
       run: make lint
 
@@ -47,14 +55,18 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-      
+    
+    - name: Install Python 3.11
+      run: |
+        sudo apt-get install -y python3.11
+
     - name: Install dependencies
       run: |
         sudo apt-get update
         sudo apt-get install -y make traceroute iputils-ping
         make install
         make install-dev
-      
+  
     - name: Test
       run: make test
 
