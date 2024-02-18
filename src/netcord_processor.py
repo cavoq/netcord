@@ -18,8 +18,8 @@ class NetcordProcessor(commands.Cog):
         """Ping the given IP address and return True if it is reachable."""
         try:
             ping_output = ping(ip_address)
-        except ValueError:
-            await ctx.send(self.formatter.format_text(ValueError))
+        except ValueError as e:
+            await ctx.send(self.formatter.format_text(e))
             return
         await ctx.send(self.formatter.format_text(ping_output))
         return
@@ -41,8 +41,8 @@ class NetcordProcessor(commands.Cog):
         """Return the traceroute of the given IP address."""
         try:
             trace_output = traceroute(ip_address)
-        except ValueError:
-            await ctx.send(self.formatter.format_text(ValueError))
+        except ValueError as e:
+            await ctx.send(self.formatter.format_text(e))
             return
         except Exception:
             await ctx.send(self.formatter.format_text("Could not trace route"))
@@ -54,8 +54,8 @@ class NetcordProcessor(commands.Cog):
         """Return the DNS records of the given IP address."""
         try:
             dig_output = dig(ip_address)
-        except ValueError:
-            await ctx.send(self.formatter.format_text(ValueError))
+        except ValueError as e:
+            await ctx.send(self.formatter.format_text(e))
             return
         await ctx.send(self.formatter.format_text(dig_output))
 
@@ -64,8 +64,8 @@ class NetcordProcessor(commands.Cog):
         """Return the DNS records of the given IP address."""
         try:
             nslookup_output = nslookup(ip_address)
-        except ValueError:
-            await ctx.send(self.formatter.format_text(ValueError))
+        except ValueError as e:
+            await ctx.send(self.formatter.format_text(e))
             return
         await ctx.send(self.formatter.format_text(nslookup_output))
 
@@ -74,10 +74,10 @@ class NetcordProcessor(commands.Cog):
         """Return the SSL certificate of the given host."""
         try:
             sslcert_output = sslcert(host)
-        except ValueError:
-            await ctx.send(self.formatter.format_text(ValueError))
-        except ConnectionError:
-            await ctx.send(self.formatter.format_text(ConnectionError))
+        except ValueError as e:
+            await ctx.send(self.formatter.format_text(e))
+        except ConnectionError as e:
+            await ctx.send(self.formatter.format_text(e))
             return
         await ctx.send(self.formatter.format_ssl_certificate(sslcert_output))
 
