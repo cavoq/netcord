@@ -3,3 +3,4 @@ __pycache__/
 geckodriver.log
 .pytest_cache/
 test/__pycache__/
+/netcord

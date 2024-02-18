@@ -25,7 +25,24 @@ DISCORD_TOKEN=<YOUR_DISCORD_TOKEN>
 
 See *make help*
 
-![image](https://user-images.githubusercontent.com/61215846/226449297-f2a8e355-4fb7-4071-8be6-1f22cebee13a.png)
+```
+#### netcord v1.1.0 ####
+
+Available targets:
+
+docker-build                   Build docker image
+docker-lint                    Run linting inside Docker container
+docker-remove                  Remove docker container
+docker-run                     Run discord bot inside docker container
+docker-sh                      Shell into docker container
+docker-test                    Run tests inside Docker container
+help                           Get help for Makefile
+install-dev                    Install requirements for development
+install                        Install requirements locally
+lint                           Run linter
+run                            Run discord bot locally
+test                           Run tests
+```
 
 ## Deployment
 
