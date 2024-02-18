@@ -14,8 +14,8 @@ class NetcordProcessor(commands.Cog):
         self.formatter = DiscordFormatter(config)
 
     @commands.command(name="ping")
-    async def ping(self, ctx, ip_address: str):
-        """Ping the given IP address and return True if it is reachable."""
+    async def ping(self, ctx, ip_address: str = commands.parameter(description="IP address to ping")):
+        """Ping the given IP address."""
         try:
             ping_output = ping(ip_address)
         except ValueError as e:
@@ -25,7 +25,7 @@ class NetcordProcessor(commands.Cog):
         return
 
     @commands.command(name="locate")
-    async def locate(self, ctx, ip_address: str):
+    async def locate(self, ctx, ip_address: str = commands.parameter(description="IP address to locate")):
         """Return the latitude and longitude of the given IP address."""
         location = locate(ip_address)
         if location is None:
@@ -37,7 +37,7 @@ class NetcordProcessor(commands.Cog):
         await ctx.send(file=map_file)
 
     @commands.command(name="traceroute")
-    async def traceroute(self, ctx, ip_address: str):
+    async def traceroute(self, ctx, ip_address: str = commands.parameter(description="IP address to trace route")):
         """Return the traceroute of the given IP address."""
         try:
             trace_output = traceroute(ip_address)
@@ -50,7 +50,7 @@ class NetcordProcessor(commands.Cog):
         await ctx.send(self.formatter.format_text(trace_output))
 
     @commands.command(name="dig")
-    async def dig(self, ctx, ip_address: str):
+    async def dig(self, ctx, ip_address: str = commands.parameter(description="IP address to resolve DNS records")):
         """Return the DNS records of the given IP address."""
         try:
             dig_output = dig(ip_address)
@@ -60,7 +60,7 @@ class NetcordProcessor(commands.Cog):
         await ctx.send(self.formatter.format_text(dig_output))
 
     @commands.command(name="nslookup")
-    async def nslookup(self, ctx, ip_address: str):
+    async def nslookup(self, ctx, ip_address: str = commands.parameter(description="IP address to resolve DNS records")):
         """Return the DNS records of the given IP address."""
         try:
             nslookup_output = nslookup(ip_address)
@@ -70,7 +70,7 @@ class NetcordProcessor(commands.Cog):
         await ctx.send(self.formatter.format_text(nslookup_output))
 
     @commands.command(name="sslcert")
-    async def sslcert(self, ctx, host: str):
+    async def sslcert(self, ctx, host: str = commands.parameter(description="Host to get SSL certificate from")):
         """Return the SSL certificate of the given host."""
         try:
             sslcert_output = sslcert(host)
